@@ -1,0 +1,50 @@
+﻿@model UserForm
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row justify-between">
+
+<form class="rounded bg-light card col-5 mx-auto p-4 hero" action="/register" method="post">
+<h1 class="text-center">Register User</h1>
+    <div class="form-group">
+        <label asp-for="Register.FirstName">First Name</label>
+        <input asp-for="Register.FirstName" class="form-control">
+        <span class="text-danger" asp-validation-for="Register.FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Register.LastName">Last Name</label>
+        <input asp-for="Register.LastName" class="form-control">
+        <span class="text-danger" asp-validation-for="Register.LastName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Register.Email">Email Address</label>
+        <input asp-for="Register.Email" class="form-control">
+        <span class="text-danger" asp-validation-for="Register.Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Register.Password">Password</label>
+        <input asp-for="Register.Password" class="form-control">
+        <span class="text-danger" asp-validation-for="Register.Password"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Register.Confirm">Confirm Password</label>
+        <input asp-for="Register.Confirm" class="form-control">
+        <span class="text-danger" asp-validation-for="Register.Confirm"></span>
+    </div>
+    <input type="submit" value="Register" class="btn btn-primary">
+</form>
+<form class="rounded bg-light card col-5 mx-auto p-4 hero" action="/login" method="post">
+<h1 class="text-center">Login User</h1>
+    <div class="form-group">
+        <label asp-for="Login.LoginEmail">Email Address</label>
+        <input asp-for="Login.LoginEmail" class="form-control">
+        <span class="text-danger" asp-validation-for="Login.LoginEmail"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Login.LoginPassword">Password</label>
+        <input asp-for="Login.LoginPassword" class="form-control">
+        <span class="text-danger" asp-validation-for="Login.LoginPassword"></span>
+    </div>
+    <input type="submit" value="Login" class="btn btn-primary">
+</form>
+</div>

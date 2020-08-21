@@ -1,0 +1,31 @@
+@model Event
+
+<form action="/create/event" method="post" class="rounded bg-light card col-5 mx-auto p-4">
+<h1 class="text-center">Plan an Event</h1>
+    <div class="form-group">
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" class="form-control">
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date">Date:</label>
+        <input asp-for="Date" class="form-control">
+        <span class="text-danger" asp-validation-for="Date"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Time">Time:</label>
+        <input asp-for="Time" class="form-control">
+        <span class="text-danger" asp-validation-for="Time"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Duration">Duration</label>
+        <input asp-for="Duration" class="form-control">
+        <span class="text-danger" asp-validation-for="Duration"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description: </label>
+        <input asp-for="Description" class="form-control">
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <input type="submit" value="Create" class="btn btn-success">
+</form>

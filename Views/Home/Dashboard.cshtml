@@ -1,0 +1,48 @@
+@model List<Event>
+
+
+<div class="jumbotron">
+<h1>Welcome to the Dojo Activity Center, @ViewBag.User.FirstName</h1>
+<table class="table table-hover">
+    <thead  class="table-primary">
+        <tr>
+            <th>Activity</th>
+            <th>Date & Time</th>
+            <th>Duration</th>
+            <th>Event Coordinator</th>
+            <th>No. of Participants</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var e in Model)
+        {
+            <tr>
+                <td><a href="view/@e.EventId">@e.Title</a></td>
+                <td>@e.Date.ToShortDateString() at @e.Time.ToShortTimeString()</td>
+                <td>@e.Duration Hour(s)</td>
+                <td>@e.Organizer.FirstName</td>
+                <td>@e.Participants.Count</td>
+                <td>
+                    @if(ViewBag.User.UserId == e.Organizer.UserId)
+                    {
+                        <a href="cancel/@e.EventId" class="btn btn-danger active">Cancel Event</a>
+                    }
+                    else
+                    {
+                        if(e.Participants.Any( p => p.UserId==ViewBag.User.UserId ))
+                        {
+                            <a href="leave/@e.EventId" class="btn btn-primary active">Leave Event</a>
+                        }
+                        else
+                        {
+                            <a href="join/@e.EventId" class="btn btn-success active">Join Event</a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="create" class="btn btn-info">Create New Activity</a>
+</div>

@@ -1,0 +1,35 @@
+@model Event
+
+<div class="card">
+<h1 class="card-header text-center">@Model.Title</h1>
+    <div class="card-body">
+        <p class="card-title">Brought To You By: @Model.Organizer.FirstName @Model.Organizer.LastName</p>
+        <p class="card-text">Date: @Model.Date.ToShortDateString()</p>
+        <p class="card-text">Time: @Model.Time.ToShortTimeString()</p>
+        <p class="card-text">Description: @Model.Description</p>
+        <h3 class="card-text">Participants:</h3>
+        <ul class="list-group">
+            @foreach(var f in Model.Participants)
+            {
+                <li class="list-group-item">@f.participant.FirstName @f.participant.LastName</li>
+            }
+        </ul>
+    </div>
+    <div class="card-footer">
+        @if(ViewBag.User.UserId == @Model.Organizer.UserId)
+        {
+            <a href="/cancel/@Model.EventId" class="btn btn-danger">Cancel Event</a>
+        }
+        else
+        {
+            if(Model.Participants.Any( f => f.UserId==ViewBag.User.UserId ))
+                        {
+                            <a href="/leave/@Model.EventId" class="btn btn-primary">Leave Event</a>
+                        }
+                        else
+                        {
+                            <a href="/join/@Model.EventId" class="btn btn-success">Join Event</a>
+                        }
+        }
+    </div>
+</div>
